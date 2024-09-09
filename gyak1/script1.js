@@ -59,3 +59,35 @@ const tomb = [24, 2, 1];
 tomb[2] = "alma";
 
 console.log("Tömb tartalma:", tomb)
+
+//TÖMBFÜGGVÉNYEK
+
+function randomArray(length, min, max) {
+    let tomb = [];
+    for (let i = 0; i < length; i++) {
+        tomb.push(Math.floor(Math.random() * (max - min) + min));
+    }
+    return tomb;
+}
+
+function evenNumbers(array) {
+    const results = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) { // nem egyenlő és típusvizsgálat !==
+            results.push(array[i])
+        }
+    }
+    return results;
+}
+
+const inputArray = randomArray(10, -5, 5);
+console.log("Páros számok kiszűrése", inputArray, inputArray.filter((number) => {
+    return number % 2 == 0;
+}))
+
+//tömb másolása, majd rendezése
+console.log(inputArray.map(number => number).sort());
+
+const arr1 = [1, 2, 3, 4, 5]
+const arr2 = arr1.map(element => element);
+arr1[3] = "A";
