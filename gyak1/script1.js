@@ -91,3 +91,16 @@ console.log(inputArray.map(number => number).sort());
 const arr1 = [1, 2, 3, 4, 5]
 const arr2 = arr1.map(element => element);
 arr1[3] = "A";
+
+function generateMatrix(a, b, min, max) {
+    const matrix = [];
+    for (let i = 0; i < a; i++) {
+        matrix.push(randomArray(b, min, max));
+    }
+    return matrix;
+}
+
+const matrix = generateMatrix(4, 5, 0, 10);
+console.log(matrix, matrix[2][3])
+
+//matrix[2,3] //véletlenül se
