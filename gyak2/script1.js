@@ -90,16 +90,46 @@ addEventListener("load", event => {
     })
     */
 
-    document.querySelector("div > input[type=text]").addEventListener("change", inputText) //(event) => inputText(event)
+    document.querySelector("div > input[type=text]").addEventListener("input", inputText) //(event) => inputText(event)
 
-    document.querySelector("div > input[type=number]")
+    document.querySelector("div > input[type=number]").addEventListener("input", inputNumber)
 })
 
 function removeOldTexts() {
-    document.querySelector("div > p").remove()
+    //document.querySelector("div > p").remove()
+    document.querySelectorAll("div > p").forEach(element => element.remove())
+    //respond with NodeList which is not an array, to transform use Array.from(*value*);
 }
 
+let text = "";
 function inputText(event) {
-    console.log(event.target.value);
+    if (event.target.value == "") {
+        event.target.value = text;
+        return;
+    }
+    text = event.target.value;
     //console.log({asd: event.target}); //prinnt out HTMLElement attributes
+
+    removeOldTexts();
+
+    printText();
+}
+
+function inputNumber(event) {
+    number = parseInt(event.target.value);
+    //console.log({asd: event.target}); //prinnt out HTMLElement attributes
+
+    removeOldTexts();
+
+    printText();
+}
+
+function printText() {
+    for (let i = 0; i < number; i++) {
+        //document.querySelector("div").innerHTML += "<p>Hello</p>"; //nem javaslom, de működik
+
+        const p = document.createElement("p");
+        p.innerText = i + " " + number + " " + text;
+        document.querySelector("div").appendChild(p)
+    }
 }
