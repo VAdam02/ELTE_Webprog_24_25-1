@@ -55,4 +55,38 @@ const warehouse = new Warehouse();
 warehouse.add(new Product("alma", "1. kft", 100, 10));
 warehouse.add(new Product("körte", "2. kft", 200, 5));
 
-console.log(document.getElementById("numberOutput"))
+let element;
+
+let number = 0;
+
+addEventListener("load", event => {
+    element = document.getElementById("numberOutput");
+    console.log(element)
+
+    //ne használd ha nem muszáj
+    /*
+    plus.onclick = (event) => {
+        console.log(1, event);
+    }
+
+    plus.onclick = (event) => {
+        console.log(2, event);
+    }
+    */
+
+    plus.addEventListener("click", (esemeny) => {
+        number++;
+        numberOutput.innerText = number;
+    })
+
+    minus.addEventListener("click", (esemeny) => {
+        number--;
+        numberOutput.innerText = number;
+    })
+
+    /*
+    plus.addEventListener("click", (esemeny) => {
+        console.log(2, event);
+    })
+    */
+})
