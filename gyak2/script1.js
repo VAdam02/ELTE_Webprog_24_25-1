@@ -54,3 +54,5 @@ class Warehouse {
 const warehouse = new Warehouse();
 warehouse.add(new Product("alma", "1. kft", 100, 10));
 warehouse.add(new Product("körte", "2. kft", 200, 5));
+
+console.log(document.getElementById("numberOutput"))
