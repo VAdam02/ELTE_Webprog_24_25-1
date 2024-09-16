@@ -57,7 +57,7 @@ warehouse.add(new Product("körte", "2. kft", 200, 5));
 
 let element;
 
-let number = 0;
+let number1 = 0;
 
 addEventListener("load", event => {
     element = document.getElementById("numberOutput");
@@ -74,6 +74,9 @@ addEventListener("load", event => {
     }
     */
 
+    plus.addEventListener("click", () => changeValue(true))
+    minus.addEventListener("click", () => changeValue(false))
+    /*
     plus.addEventListener("click", (esemeny) => {
         number++;
         numberOutput.innerText = number;
@@ -83,6 +86,7 @@ addEventListener("load", event => {
         number--;
         numberOutput.innerText = number;
     })
+    */
 
     /*
     plus.addEventListener("click", (esemeny) => {
@@ -95,12 +99,21 @@ addEventListener("load", event => {
     document.querySelector("div > input[type=number]").addEventListener("input", inputNumber)
 })
 
+function changeValue(increase) {
+    if (increase) {
+        number1++;
+    } else {
+        number1--;
+    }
+}
+
 function removeOldTexts() {
     //document.querySelector("div > p").remove()
     document.querySelectorAll("div > p").forEach(element => element.remove())
     //respond with NodeList which is not an array, to transform use Array.from(*value*);
 }
 
+let number2 = 0;
 let text = "";
 function inputText(event) {
     if (event.target.value == "") {
@@ -116,7 +129,7 @@ function inputText(event) {
 }
 
 function inputNumber(event) {
-    number = parseInt(event.target.value);
+    number2 = parseInt(event.target.value);
     //console.log({asd: event.target}); //prinnt out HTMLElement attributes
 
     removeOldTexts();
@@ -125,11 +138,11 @@ function inputNumber(event) {
 }
 
 function printText() {
-    for (let i = 0; i < number; i++) {
+    for (let i = 0; i < number2; i++) {
         //document.querySelector("div").innerHTML += "<p>Hello</p>"; //nem javaslom, de működik
 
         const p = document.createElement("p");
-        p.innerText = i + " " + number + " " + text;
+        p.innerText = i + " " + number2 + " " + text;
         p.style.backgroundColor = "blue";
         p.setAttribute("number", i);
         p.style.fontSize = (i * 2 + 10) + "px";
