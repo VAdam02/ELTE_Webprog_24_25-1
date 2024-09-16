@@ -130,6 +130,11 @@ function printText() {
 
         const p = document.createElement("p");
         p.innerText = i + " " + number + " " + text;
+        p.style.backgroundColor = "blue";
+        p.setAttribute("number", i);
+        p.style.fontSize = (i * 2 + 10) + "px";
+        //console.log(p.attributes.number) //egszerűbb a másik megoldás
+        console.log(p.getAttribute("number"));
         document.querySelector("div").appendChild(p)
     }
 }
