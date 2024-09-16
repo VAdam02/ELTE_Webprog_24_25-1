@@ -89,4 +89,17 @@ addEventListener("load", event => {
         console.log(2, event);
     })
     */
+
+    document.querySelector("div > input[type=text]").addEventListener("change", inputText) //(event) => inputText(event)
+
+    document.querySelector("div > input[type=number]")
 })
+
+function removeOldTexts() {
+    document.querySelector("div > p").remove()
+}
+
+function inputText(event) {
+    console.log(event.target.value);
+    //console.log({asd: event.target}); //prinnt out HTMLElement attributes
+}
