@@ -27,7 +27,7 @@ console.assert(find2([1, 2, 3, 4, 5], x => x < 0) === -1, "find2([1, 2, 3, 4, 5]
 console.assert(find2([1, 2, 3, -4, 5], x => x < 0) === 3, "find2([1, 2, 3, -4, 5], x => x < 0) should be 3");
 console.assert(find2([1, 2, 3, 4, 5], x => x % 2 === 1) === 0, "find2([1, 2, 3, 4, 5], x => x % 2 === 1) should be 0");
 console.assert(find2([1, 2, 3, 4, 5], x => x % 2 === 0) === 1, "find2([1, 2, 3, 4, 5], x => x % 2 === 0) should be 1");
-console.assert(find2([1, 2, 3, 4, 5], x => x === factorial(2)) === find([1, 2, 3, 4, 5], x => x === factorial(2)), "find2([1, 2, 3, 4, 5], x => x === factorial(2)) should be 1");
+console.assert(find2([1, 2, 3, 4, 5], x => x === factorial(2)) === 1, "find2([1, 2, 3, 4, 5], x => x === factorial(2)) should be 1");
 
 //TÖMBFÜGGVÉNYEK: (dokumentációt igényel)
 
@@ -127,7 +127,7 @@ function factorial(n)
     }
     return result;
 }
-t
+
 function compareArrays(arr1, arr2)
 {
     if (arr1.length !== arr2.length) { return false; }
