@@ -14,6 +14,10 @@ addEventListener("load", () => {
    addEventListener("click", (
         (alma) => copyContent(alma))
     );
+
+    //document.querySelector(".swap").addEventListener("click", swapLI)
+
+    document.querySelectorAll(".swap").forEach(element => element.addEventListener("click", swapLI));
 })
 
 function blockNonElteLinks(event) {
@@ -40,7 +44,7 @@ function blockNonElteLinks2(event) {
 }
 
 function copyContent(event) {
-    console.log(event);
+    //console.log(event);
     if (event.target.tagName !== "INPUT") return;
 
     console.log({asd: event.target})
@@ -55,3 +59,25 @@ addEventListener("click", (event) => {
     console.log(event)
 })
 */
+
+let firstClicked = null;
+function swapLI(event) {
+    console.log(event.target.tagName)
+    if (event.target.tagName != "LI") return;
+
+    if (firstClicked == null) {
+        firstClicked = event.target;
+        firstClicked.style.fontWeight = "bold"
+        firstClicked.style.color = "magenta"
+    }
+    else {
+        firstClicked.style.fontWeight = "normal"
+        firstClicked.style.color = "black"
+
+        const temp = event.target.innerHTML;
+        event.target.innerHTML = firstClicked.innerHTML;
+        firstClicked.innerHTML = temp;
+
+        firstClicked = null;
+    }
+}
