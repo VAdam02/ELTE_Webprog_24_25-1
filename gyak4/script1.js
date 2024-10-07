@@ -1,12 +1,11 @@
 addEventListener("load", () => {
-    values = extractData(document.getElementById("targyak"))
+    addEventListener("click", orderBy);
 
-    document.getElementById("targyak").addEventListener("click", orderBy);
+    document.querySelectorAll("table").forEach(table => order(table))
 })
 
-let values;
 function extractData(table) {
-    const values = Array.from(targyak.rows).map(row => Array.from(row.cells).map(cell => new Cell(cell)));
+    const values = Array.from(table.rows).map(row => Array.from(row.cells).map(cell => new Cell(cell)));
     return values;
 }
 
@@ -22,7 +21,14 @@ function extractData(table) {
 function orderBy(event) {
     if (event.target.tagName !== "TH") return;
 
-    let orderByColumns = event.target.closest("table").getAttribute("orderByColumns");
+    const table = event.target.closest("table");
+    console.log(event.target)
+    console.log(table)
+
+    /*
+    let orderByColumns = table.getAttribute("orderByColumns");
+    */
+    let orderByColumns = localStorage.getItem(table.id);
     if (orderByColumns == null) orderByColumns = [];
     else orderByColumns = JSON.parse(orderByColumns);
 
@@ -32,13 +38,20 @@ function orderBy(event) {
 
     console.log(orderByColumns)
 
-    event.target.closest("table").setAttribute("orderByColumns", JSON.stringify(orderByColumns));
+    //table.setAttribute("orderByColumns", JSON.stringify(orderByColumns));
+    localStorage.setItem(table.id, JSON.stringify(orderByColumns));
 
-    order(event.target.closest("table"));
+    order(table);
 }
 
 function order(table) {
-    const orderByColumns = JSON.parse(table.getAttribute("orderByColumns"));
+    const values = extractData(table)
+
+    let orderByColumns = localStorage.getItem(table.id);
+    if (orderByColumns == null) orderByColumns = [];
+    else orderByColumns = JSON.parse(orderByColumns);
+
+    //const orderByColumns = JSON.parse(table.getAttribute("orderByColumns"));
 
     values.sort((a, b) => {
         for (const orderBy of orderByColumns) {
