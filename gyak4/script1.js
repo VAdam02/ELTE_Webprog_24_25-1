@@ -10,19 +10,47 @@ function extractData(table) {
     return values;
 }
 
+/*
+[
+    { column: 5, order: "ASC" },
+    { column: 2, order: "DESC" }
+]
+
+[5, -2] //mit csinálsz a 0. oszlopnál?
+*/
+
 function orderBy(event) {
     if (event.target.tagName !== "TH") return;
-    event.target.closest("table").setAttribute("orderBy", event.target.cellIndex);
+
+    let orderByColumns = event.target.closest("table").getAttribute("orderByColumns");
+    if (orderByColumns == null) orderByColumns = [];
+    else orderByColumns = JSON.parse(orderByColumns);
+
+    if (!event.ctrlKey) orderByColumns = [];
+
+    orderByColumns.push(event.target.cellIndex)
+
+    console.log(orderByColumns)
+
+    event.target.closest("table").setAttribute("orderByColumns", JSON.stringify(orderByColumns));
 
     order(event.target.closest("table"));
 }
 
 function order(table) {
-    const orderBy = table.getAttribute("orderBy");
+    const orderByColumns = JSON.parse(table.getAttribute("orderByColumns"));
 
-    values.sort((a, b) => a[orderBy].value.localeCompare(b[orderBy].value));
+    values.sort((a, b) => {
+        for (const orderBy of orderByColumns) {
+            const result = a[orderBy].value.localeCompare(b[orderBy].value);
+            if (result != 0) {
+                return result;
+            }
+        }
+        return 0;
+    });
 
-    Array.from(table.children[1].children).forEach(element => element.remove());
+    table.children[1].remove();
     const tbody = document.createElement("tbody");
 
     for (const row of values) {
@@ -30,7 +58,6 @@ function order(table) {
         for (const cell of row) {
             const td = document.createElement("td")
             td.innerHTML = cell.value;
-
             tr.appendChild(td);
         }
         tbody.appendChild(tr)
