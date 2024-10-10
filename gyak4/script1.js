@@ -5,7 +5,7 @@ addEventListener("load", () => {
 })
 
 function extractData(table) {
-    const values = Array.from(table.rows).map(row => Array.from(row.cells).map(cell => new Cell(cell)));
+    const values = Array.from(table.rows).splice(1).map(row => Array.from(row.cells).map(cell => new Cell(cell)));
     return values;
 }
 
@@ -15,7 +15,7 @@ function extractData(table) {
     { column: 2, order: "DESC" }
 ]
 
-[5, -2] //mit csinálsz a 0. oszlopnál?
+[5, -2] //mit csinálsz a 0. oszlopnál (+0, -0 probléma)?
 */
 
 function orderBy(event) {
