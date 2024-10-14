@@ -8,6 +8,8 @@ addEventListener("load", () => {
     canvas.addEventListener("click", () => {
         if (gameState == 0) {
             gameState = 1;
+        } else if (gameState == 1) {
+            gameState = 2;
         }
     })
 
@@ -36,6 +38,13 @@ function update(deltatime) {
         plane.vx = 200;
         parcel.x = plane.x;
         parcel.y = plane.y + plane.height;
+    } else if (gameState == 2) {
+        console.log("drop");
+
+        parcel.vy += gravity * deltatime;
+
+        parcel.x += parcel.vx * deltatime;
+        parcel.y -= parcel.vy * deltatime;
     }
 
 }
@@ -63,6 +72,10 @@ const parcel = {
     y: plane.y + plane.height,
     width: 30,
     height: 30,
-    img: new Image()
+    img: new Image(),
+    vx: 200,
+    vy: -50
 }
+
+const gravity = -100;
 parcel.img.src = "parcel.png"
