@@ -28,19 +28,23 @@ function next() {
 let gameState = 0;
 
 function update(deltatime) {
+    plane.x += plane.vx * deltatime;
+
     if (gameState == 0) {
         console.log("Waiting for click")
     } else if (gameState == 1) {
         plane.vx = 200;
+        parcel.x = plane.x;
+        parcel.y = plane.y + plane.height;
     }
 
-    plane.x += plane.vx * deltatime;
 }
 
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.drawImage(plane.img, plane.x, plane.y, plane.width, plane.height)
+    ctx.drawImage(parcel.img, parcel.x, parcel.y, parcel.width, parcel.height)
 }
 
 const plane = {
@@ -52,3 +56,13 @@ const plane = {
     img: new Image()
 }
 plane.img.src = "plane.png";
+
+
+const parcel = {
+    x: 0,
+    y: plane.y + plane.height,
+    width: 30,
+    height: 30,
+    img: new Image()
+}
+parcel.img.src = "parcel.png"
