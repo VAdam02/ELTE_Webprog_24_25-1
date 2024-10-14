@@ -27,9 +27,18 @@ function next() {
     requestAnimationFrame(next);
 }
 
+/*
+0 - waiting for start
+1 - flying
+2 - drop
+3 - lose
+4 - win
+*/
 let gameState = 0;
 
 function update(deltatime) {
+    house.y = canvas.height - house.height - 20;
+
     plane.x += plane.vx * deltatime;
 
     if (gameState == 0) {
@@ -45,6 +54,10 @@ function update(deltatime) {
 
         parcel.x += parcel.vx * deltatime;
         parcel.y -= parcel.vy * deltatime;
+
+        if (parcel.y > canvas.height || parcel.x > canvas.width) {
+            gameState = 3;
+        }
     }
 
 }
@@ -54,6 +67,7 @@ function render() {
 
     ctx.drawImage(plane.img, plane.x, plane.y, plane.width, plane.height)
     ctx.drawImage(parcel.img, parcel.x, parcel.y, parcel.width, parcel.height)
+    ctx.drawImage(house.img, house.x, house.y, house.width, house.height)
 }
 
 const plane = {
@@ -76,6 +90,15 @@ const parcel = {
     vx: 200,
     vy: -50
 }
+parcel.img.src = "parcel.png"
+
+const house = {
+    x: 400,
+    y: 0,
+    width: 100,
+    height: 100,
+    img: new Image()
+}
+house.img.src = "house.png"
 
 const gravity = -100;
-parcel.img.src = "parcel.png"
