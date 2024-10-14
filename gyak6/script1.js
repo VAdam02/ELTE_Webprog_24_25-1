@@ -7,13 +7,22 @@ addEventListener("load", () => {
     const stopButton = document.querySelector("#stop");
 
     startButton.addEventListener("click", () => {
-        interval = setInterval(tick, cycleTime);
+        setTimeout(startTimer, 2000);
     })
 
     stopButton.addEventListener("click", () => {
         clearInterval(interval);
+        interval = undefined;
     })
 });
+
+function startTimer() {
+    if (interval != undefined) {
+        console.log("Already running")
+        return;
+    }
+    interval = setInterval(tick, cycleTime);
+}
 
 function tick() {
     timer++;
