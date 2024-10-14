@@ -47,6 +47,10 @@ function update(deltatime) {
         plane.vx = 200;
         parcel.x = plane.x;
         parcel.y = plane.y + plane.height;
+
+        if (plane.x > canvas.width) {
+            gameState = 3;
+        }
     } else if (gameState == 2) {
         console.log("drop");
 
@@ -58,6 +62,15 @@ function update(deltatime) {
         if (parcel.y > canvas.height || parcel.x > canvas.width) {
             gameState = 3;
         }
+
+        if (isCollision(parcel, house)) {
+            gameState = 4;
+            plane.vx = 0;
+        }
+    }
+
+    if (gameState == 3 || gameState == 4) {
+        plane.vx = 0;
     }
 
 }
@@ -68,6 +81,21 @@ function render() {
     ctx.drawImage(plane.img, plane.x, plane.y, plane.width, plane.height)
     ctx.drawImage(parcel.img, parcel.x, parcel.y, parcel.width, parcel.height)
     ctx.drawImage(house.img, house.x, house.y, house.width, house.height)
+
+    if (gameState == 3) {
+        console.log(gameState)
+        ctx.font = '48px serif';
+        ctx.fillStyle = "red";
+        ctx.textAlign = "center"
+        ctx.fillText("Lose!", canvas.width/2, canvas.height/2);
+    }
+    else if (gameState == 4) {
+        console.log(gameState)
+        ctx.font = '48px serif';
+        ctx.fillStyle = "red";
+        ctx.textAlign = "center"
+        ctx.fillText("Delivered!", canvas.width/2, canvas.height/2);
+    }
 }
 
 const plane = {
@@ -79,7 +107,6 @@ const plane = {
     img: new Image()
 }
 plane.img.src = "plane.png";
-
 
 const parcel = {
     x: 0,
@@ -102,3 +129,14 @@ const house = {
 house.img.src = "house.png"
 
 const gravity = -100;
+
+
+function isCollision(box1, box2) {
+    if (box1.x + box1.width < box2.x) return false;
+    if (box1.y + box1.height < box2.y) return false;
+
+    if (box2.x + box2.width < box1.x) return false;
+    if (box2.y + box2.height < box1.y) return false;
+
+    return true;
+}
