@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="src/task.css">
+</head>
+
+<body>
+    <header>
+        <h1>2. Letöltés / Download</h1>
+    </header>
+    <div id="content">
+        <div id="download-region">            
+            <select id="region">
+                <option value="dach">Germany, Austria, Switzerland</option>
+                <option value="france">France</option>
+                <option value="benelux">Belgium, Netherlands, Luxembourg</option>
+                <option value="visegrad">Czechia, Hungary, Poland, Slovakia</option>
+                <option value="nordic">Denmark, Finland, Norway, Sweden</option>
+            </select>
+            <button id="download">Download</button>
+        </div>
+        <div>
+            <canvas width="1000px" height="300px" id="chart"></canvas>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

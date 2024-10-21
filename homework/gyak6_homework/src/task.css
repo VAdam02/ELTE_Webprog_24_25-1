@@ -1,0 +1,43 @@
+#content > * {
+    display: flex;
+    flex-direction: column;
+}
+
+#download-region {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 1000px;
+    margin-bottom: 10px;
+}
+
+#download-region select, button {
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--clr-highlight);
+    color: var(--clr-white);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#download-region select:hover, button:hover {
+    border: 5px solid rgba(0, 0, 0, 0.1);
+}
+
+#download-region select:active, button:active {
+    filter: brightness(90%);
+}
+
+
+
+#chart {
+    background-color: var(--clr-white);
+    border-radius: 15px;
+    margin: auto;
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
