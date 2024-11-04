@@ -31,49 +31,54 @@
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             //Do nothing
         } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $errorMessages = array();
+            if (isset($_POST["clear"])) {
+                $_POST = array();
+            }
+            else if (isset($_POST["send"])) {
+                $errorMessages = array();
 
-            if (!isset($_POST["username"])) {
-                //echo "Username required<br>";
-                //$errorMessages[] = "Username is required"; //hozzáfűzés a tömb végére
-                $errorMessages["username"] = "Username is required";
-            }
-            else if (!strlen($_POST["username"]) >= 3) {
-                //echo "Username must be at least 3 characters<br>";
-                //$errorMessages[] = "Username must be at least 3 characters";
-                $errorMessages["username"] = "Username must be at least 3 characters";
-            }
+                if (!isset($_POST["username"])) {
+                    //echo "Username required<br>";
+                    //$errorMessages[] = "Username is required"; //hozzáfűzés a tömb végére
+                    $errorMessages["username"] = "Username is required";
+                }
+                else if (!strlen($_POST["username"]) >= 3) {
+                    //echo "Username must be at least 3 characters<br>";
+                    //$errorMessages[] = "Username must be at least 3 characters";
+                    $errorMessages["username"] = "Username must be at least 3 characters";
+                }
 
-            if (!isset($_POST["age"])) {
-                //echo "Age required<br>";
-                $errorMessages["age"] = "Age is required";
-            }
-            else if (!is_numeric($_POST["age"])) {
-                //echo "Must be number<br>";
-                $errorMessages["age"] = "Must be number";
-            }
-            else if (!(18 <= $_POST["age"] && $_POST["age"] < 100)) {
-                //echo "Age out of limit<br>";
-                $errorMessages["age"] = "Age out of limit";
-            }
+                if (!isset($_POST["age"])) {
+                    //echo "Age required<br>";
+                    $errorMessages["age"] = "Age is required";
+                }
+                else if (!is_numeric($_POST["age"])) {
+                    //echo "Must be number<br>";
+                    $errorMessages["age"] = "Must be number";
+                }
+                else if (!(18 <= $_POST["age"] && $_POST["age"] < 100)) {
+                    //echo "Age out of limit<br>";
+                    $errorMessages["age"] = "Age out of limit";
+                }
 
-            //var_dump($errorMessages); //kiechozza a tömb tartalmát
+                //var_dump($errorMessages); //kiechozza a tömb tartalmát
 
-            if (count($errorMessages) > 0) {
-                echo "Hiba történt";
-            }
-            else {
-                //process
-                echo "Data processed";
+                if (count($errorMessages) > 0) {
+                    echo "Hiba történt";
+                }
+                else {
+                    //process
+                    echo "Data processed";
 
-                //clear
-                $_POST = array(); //céges környezetben annyira nem szép, zh-n célnak megfelel
+                    //clear
+                    $_POST = array(); //céges környezetben annyira nem szép, zh-n célnak megfelel
+                }
             }
         }
     ?>
 
     <a href="?color=yellow">Sárga</a> <!-- GET paraméteres link -->
-    <form action="/" method="get" style="background-color: <?= $_GET["color"] ?>">
+    <form action="/" method="get" style="background-color: <?= isset($_GET["color"]) ? $_GET["color"] : "" ?>">
         <input type="radio" id="blue" name="color" value="Blue">
         <label for="blue">Blue</label><br>
         <input type="radio" id="red" name="color" value="Red">
@@ -86,11 +91,12 @@
     <form action="/" method="post">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" value="<?= isset($_POST["username"]) ? $_POST["username"] : "" ?>" placeholder="Kis Anna">
-        <span><?= $errorMessages["username"] ?></span><br>
+        <span><?= isset($errorMessages["username"]) ? $errorMessages["username"] : "" ?></span><br>
         <label for="age">Age</label>
         <input type="number" id="age" name="age" value="<?= isset($_POST["age"]) ? $_POST["age"] : "" ?>" placeholder="18">
-        <span><?= $errorMessages["age"] ?></span><br>
+        <span><?= isset($errorMessages["age"]) ? $errorMessages["age"] : "" ?></span><br>
         <input type="submit" name="send" id="bekuldes" value="Beküldés">
+        <input type="submit" name="clear" id="torles" value="Törlés">
     </form>
 </body>
 </html>
