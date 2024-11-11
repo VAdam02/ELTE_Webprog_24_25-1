@@ -24,7 +24,22 @@
 
     <?php
 
-    var_dump($file);
+    function readJSON($fileName) {
+        $jsonText = file_get_contents($fileName);
+        $json = json_decode($jsonText, true); //fontos, hogy true legyen, különben érdekes adatlekérdezési hibákat okoz
+        return $json;
+    }
+
+    var_dump(readJSON("data.json"));
+
+    function writeJSON($fileName, $json) {
+        //$jsonText = json_encode($json);
+        $jsonText = json_encode($json, JSON_PRETTY_PRINT);
+        file_put_contents($fileName, $jsonText);
+    }
+
+    writeJSON("data2.json", readJSON("data.json"));
+
     ?>
 </body>
 </html>
