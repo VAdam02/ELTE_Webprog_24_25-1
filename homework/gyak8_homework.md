@@ -1,5 +1,8 @@
 ### 5. Szállás (php-5-hotel, 12 pont)
 
+Teljes mappa futtatásához használd ezt a parancsot:
+php -S localhost:3000 -t ./
+
 Szuper! Kiválasztottuk, hogy hol nyaralunk, már csak le kell foglalni a szállást! Készítsd el a kiindulási csomagban található űrlap ellenőrzését az alábbi pontok szerint! Ha az űrlap kitöltésében hibát észleltél, akkor jeleníts meg egy egyértelmű hibaüzenetet a mezők alatt!
 
 - a. (2 pont) Minden mező kitöltése kötelező.
