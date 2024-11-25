@@ -10,9 +10,9 @@ session_start();
     <div>
         <?php if (isset($_SESSION["username"])) : ?>
             <span><?= $_SESSION["username"] ?></span>
-            <a href="/logout">Logout</a>
+            <a href="/auth/logout.php">Logout</a>
         <?php else : ?>
-            <a href="/login">Login</a>
+            <a href="/auth/login.php">Login</a>
         <?php endif ?>
     </div>
 </nav>
