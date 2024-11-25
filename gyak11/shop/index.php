@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,19 +6,8 @@ session_start();
     <title>Document</title>
 </head>
 <body style="margin: 0">
-    <nav style="display: flex; justify-content: space-between; background-color: gray">
-        <div>
-            <a href="/">Home</a>
-            <a href="/">Dummy</a>
-        </div>
-        <div>
-            <?php if (isset($_SESSION["username"])) : ?>
-                <a href="/login"><?= $_SESSION["username"] ?></a>
-                <a href="/logout">Logout</a>
-            <?php else : ?>
-                <a href="/login">Login</a>
-            <?php endif ?>
-        </div>
-    </nav>
+    <?php include("./components/navbar.php"); /*megpróbálja betölteni*/ ?>
+    <!--<?php require("./components/navbar.php"); /*fail ha nem sikerül*/ ?>-->
+    <p>hello</p>
 </body>
 </html>
