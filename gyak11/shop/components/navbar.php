@@ -8,8 +8,8 @@ session_start();
         <a href="/">Dummy</a>
     </div>
     <div>
-        <?php if (isset($_SESSION["username"])) : ?>
-            <span><?= $_SESSION["username"] ?></span>
+        <?php if (isset($_SESSION["user"]["username"])) : ?>
+            <span><?= $_SESSION["user"]["username"] ?></span>
             <a href="/auth/logout.php">Logout</a>
         <?php else : ?>
             <a href="/auth/login.php">Login</a>
