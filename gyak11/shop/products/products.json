@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Mouse",
+        "category": "Electronics",
+        "description": "A wireless mouse with ergonomic design and high precision.",
+        "price": 25.99,
+        "stock": 0
+    },
+    {
+        "id": 2,
+        "name": "Gaming Keyboard",
+        "category": "Electronics",
+        "description": "Mechanical keyboard with wireless connectivity and customizable RGB lighting.",
+        "price": 89.99,
+        "stock": 50
+    },
+    {
+        "id": 3,
+        "name": "Wireless Earbuds",
+        "category": "Electronics",
+        "description": "Compact wireless earbuds with noise-cancelling features.",
+        "price": 55.99,
+        "stock": 150
+    },
+    {
+        "id": 4,
+        "name": "Leather Wallet",
+        "category": "Fashion",
+        "description": "A stylish leather wallet with multiple compartments for cash and cards.",
+        "price": 45.00,
+        "stock": 80
+    },
+    {
+        "id": 5,
+        "name": "Leather Shoes",
+        "category": "Footwear",
+        "description": "Durable leather shoes designed for all-day comfort.",
+        "price": 120.00,
+        "stock": 40
+    },
+    {
+        "id": 6,
+        "name": "Desk Lamp",
+        "category": "Home Decor",
+        "description": "An energy-efficient desk lamp with adjustable brightness and design.",
+        "price": 29.99,
+        "stock": 150
+    },
+    {
+        "id": 7,
+        "name": "Floor Lamp",
+        "category": "Home Decor",
+        "description": "A sleek and modern floor lamp to illuminate your living room.",
+        "price": 75.00,
+        "stock": 60
+    },
+    {
+        "id": 8,
+        "name": "Espresso Machine",
+        "category": "Home Appliances",
+        "description": "A compact espresso machine for coffee enthusiasts.",
+        "price": 250.00,
+        "stock": 20
+    },
+    {
+        "id": 9,
+        "name": "Running Shoes",
+        "category": "Footwear",
+        "description": "Lightweight running shoes designed for both casual wear and athletic use.",
+        "price": 75.50,
+        "stock": 60
+    },
+    {
+        "id": 10,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "description": "Portable Bluetooth speaker with wireless functionality and deep bass.",
+        "price": 45.99,
+        "stock": 80
+    }
+]

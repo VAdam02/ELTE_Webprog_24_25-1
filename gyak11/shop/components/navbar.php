@@ -5,7 +5,7 @@ session_start();
 <nav style="display: flex; justify-content: space-between; background-color: gray">
     <div>
         <a href="/">Home</a>
-        <a href="/">Dummy</a>
+        <a href="/products/">Products</a>
     </div>
     <div>
         <?php if (isset($_SESSION["user"]["username"])) : ?>

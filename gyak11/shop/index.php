@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body style="margin: 0">
-    <?php include("./components/navbar.php"); /*megpróbálja betölteni*/ ?>
+    <?php include($_SERVER["DOCUMENT_ROOT"] . "/components/navbar.php"); /*megpróbálja betölteni*/ ?>
     <!--<?php require("./components/navbar.php"); /*fail ha nem sikerül*/ ?>-->
     <p>hello</p>
 </body>
