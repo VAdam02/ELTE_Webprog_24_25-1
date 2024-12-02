@@ -26,7 +26,8 @@
                 "username" => $resultUser["username"]
             ];
 
-            header("Location: /");
+            $redirectURI = isset($_SESSION["redirect_after_login"]) ? $_SESSION["redirect_after_login"] : "/";
+            header("Location: $redirectURI");
         }
     }
 
