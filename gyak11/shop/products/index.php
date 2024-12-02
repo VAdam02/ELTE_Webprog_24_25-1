@@ -1,3 +1,6 @@
+<?php
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/auth/protected.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
