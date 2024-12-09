@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Weapon",
+        "protocol": "Fire_Explosive",
+        "level1": [],
+        "level2": [],
+        "level3": [],
+        "level4": [
+            {
+                "name": "Ion cannon",
+                "source": "Tollan"
+            }
+        ]
+    },
+    {
+        "name": "Medicine",
+        "protocol": "Biosafety",
+        "level1": [],
+        "level2": [],
+        "level3": [],
+        "level4": []
+    }
+]
