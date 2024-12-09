@@ -3,31 +3,28 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorMessages = [];
-        
 
-        $json = readJSON("./user.json");
+        $json = readJSON("./users.json");
         $searchUsername = $_POST["username"];
         $searchPassword = $_POST["password"];
         $resultUser = null;
         foreach ($json as $user) {
-            if ($user['username'] == $searchUsername && $user["password"] == $searchPassword) {
+            if (isset($user['username']) && $user['username'] == $searchUsername && $user["password"] == $searchPassword) {
                 $resultUser = $user;
                 break;
             }
         }
-
         if ($resultUser == null) $errorMessages["auth"] = "Incorrect username or password";
-        else {
-            if (isset($_SESSION["user"])) {
-                session_destroy();
-            }
 
+        if (count($errorMessages) == 0) {
             $_SESSION["user"] = [
-                "username" => $resultUser["username"]
+                "username" => $searchUsername
             ];
 
-            $redirectURI = isset($_SESSION["redirect_after_login"]) ? $_SESSION["redirect_after_login"] : "/";
+            $redirectURI = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : '/';
+            unset($_SESSION['redirect_after_login']);
             header("Location: $redirectURI");
+            die();
         }
     }
 

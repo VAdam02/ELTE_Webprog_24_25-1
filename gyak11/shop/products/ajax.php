@@ -1,9 +1,13 @@
 <?php
-function readJSON($fileName) {
-    $jsonText = file_get_contents($fileName);
-    $json = json_decode($jsonText, true); //fontos, hogy true legyen, különben érdekes adatlekérdezési hibákat okoz
-    return $json;
-}
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/products/productUtil.php');
+    $products = getAllProducts();
 
-echo json_encode(readJSON($_SERVER['DOCUMENT_ROOT'] . '/products/products.json'));
+    if (isset($_GET['available']) && $_GET['available'] == 'true') { $products = filterAvailable($products); }
+    if (isset($_GET['search'])) { $products = filterBySearch($products, $_GET['search']); }
+    if (isset($_GET['from'])) { $products = filterByMinPrice($products, $_GET['from']); }
+    if (isset($_GET['to'])) { $products = filterByMaxPrice($products, $_GET['to']); }
+    
+    echo json_encode($products);
+}
 ?>

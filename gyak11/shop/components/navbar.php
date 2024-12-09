@@ -2,17 +2,17 @@
 session_start();
 ?>
 
-<nav style="display: flex; justify-content: space-between; background-color: gray">
-    <div>
+<nav style="background-color: gray; color: white; width: 100%; display: flex; justify-content: space-between;">
+    <div style="padding: 10px; display: flex; gap: 10px;">
         <a href="/">Home</a>
         <a href="/products/">Products</a>
     </div>
-    <div>
-        <?php if (isset($_SESSION["user"]["username"])) : ?>
+    <div style="padding: 10px; display: flex; gap: 10px;">
+        <?php if (isset($_SESSION["user"])) : ?>
             <span><?= $_SESSION["user"]["username"] ?></span>
             <a href="/auth/logout.php">Logout</a>
         <?php else : ?>
             <a href="/auth/login.php">Login</a>
-        <?php endif ?>
+        <?php endif; ?>
     </div>
 </nav>
