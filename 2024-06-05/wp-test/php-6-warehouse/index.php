@@ -53,7 +53,19 @@
                     <div class="input">
                         <label for="category">Kategória / Category</label>
                         <select name="category" id="category">
-                                <option value=""></option>
+                            <option value=""></option>
+                            <?php
+                            function readJSON($fileName) {
+                                $jsonText = file_get_contents($fileName);
+                                $json = json_decode($jsonText, true);
+                                //return $json ?? [];
+                                return $json != null ? $json : [];
+                            }
+
+                            $categories = readJSON("data.json");
+                            foreach ($categories as $category) : ?>
+                                <option value="<?= $category["name"] ?>"><?= $category["name"] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="input">
@@ -74,6 +86,24 @@
         </div>
 
         <h2>Raktár tartalma / Warehouse content</h2>
+        <div>
+            <p>item1</p>
+            <form action="index.php?id=20" method="POST"><button>Törlés</button></form>
+        </div>
+        <div>
+            <p>item3</p>
+            <form action="index.php" method="get">
+                <input type="hidden" name="id" value="25">
+                <button>Törlés</button>
+            </form>
+        </div>
+        <div>
+            <p>item3</p>
+            <form action="index.php" method="post">
+                <input type="hidden" name="id" value="19">
+                <button>Törlés</button>
+            </form>
+        </div>
     </div>
 </body>
 
